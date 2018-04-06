@@ -42,6 +42,7 @@ class Scraper
   def self.scrape_profile_page(profile_url)
     html = open(profile_url)
     doc = Nokogiri::HTML(html)
+<<<<<<< HEAD
     
     students_twitter = []
     students_linkedin = []
@@ -49,11 +50,21 @@ class Scraper
     students_youtube = []
     students_blog = []
     
+=======
+    
+    students_twitter = []
+    students_linkedin = []
+    students_github = []
+    students_youtube = []
+    students_blog = []
+    
+>>>>>>> 83c770c23de6774d29e432c91ae6be6cf9678dd4
     doc.xpath('//div[@class="social-icon-container"]/a').map do |link|
       if link['href'].include?("twitter")
         students_twitter << link['href']
       end
     end
+<<<<<<< HEAD
 
     doc.xpath('//div[@class="social-icon-container"]/a').map do |link|
       if link['href'].include?("linkedin")
@@ -62,6 +73,16 @@ class Scraper
     end
 
     doc.xpath('//div[@class="social-icon-container"]/a').map do |link|
+=======
+
+    doc.xpath('//div[@class="social-icon-container"]/a').map do |link|
+      if link['href'].include?("linkedin")
+        students_linkedin << link['href']
+      end
+    end
+
+    doc.xpath('//div[@class="social-icon-container"]/a').map do |link|
+>>>>>>> 83c770c23de6774d29e432c91ae6be6cf9678dd4
       if link['href'].include?("github")
         students_github << link['href']
       end
@@ -77,6 +98,10 @@ class Scraper
     
     students_quote = doc.css(".profile-quote").text
     students_bio = doc.css(".description-holder p").text
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 83c770c23de6774d29e432c91ae6be6cf9678dd4
     students_twitter
     students_linkedin
     students_github
@@ -84,7 +109,12 @@ class Scraper
       if students_youtube = ""
         students_youtube = nil
       end
+<<<<<<< HEAD
     students_blog   
+=======
+    students_blog
+    
+>>>>>>> 83c770c23de6774d29e432c91ae6be6cf9678dd4
      out_put = {:twitter=>students_twitter[0],
                    :linkedin=>students_linkedin[0],
                    :github=>students_github[0],
@@ -92,6 +122,13 @@ class Scraper
                    :blog=>students_blog,
                    :bio=> students_bio}
      out_put.delete_if {|key, value| value == [] || value == nil}
+<<<<<<< HEAD
      out_put
       end
 end
+=======
+    
+     out_put
+      end
+end
+>>>>>>> 83c770c23de6774d29e432c91ae6be6cf9678dd4
